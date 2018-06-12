@@ -4,7 +4,19 @@
     "description" : "Django Plotly Dash components",
     "main" : "lib/index.js",
     "repository" : {
-        "url" : "https"//github.com/GibbsConsulting/dpd-components.git",
+        "url" : "https://github.com/GibbsConsulting/dpd-components.git",
         "type" : "git"
-    }
+    },
+    "license" : "GNU AGPL v3.0",
+    "issues" : "https://github.com/GibbsConsutling/dpd-components/issues",
+    "homepage" : "https://github.com/GibbsConsutling/dpd-components",
+    "dependencies" : {
+        "copyfiles" : "^1.2.0",
+        "prop-types" : "^15.5.9",
+        "react" : "^15.5.4",
+        "react-dom" : "^15.5.4",
+    },
+    "devDependencies" : {
+        "react-test-renderer" : "^15.5.4"
+    },
 }
