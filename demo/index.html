@@ -6,8 +6,21 @@
         <script type="text/javascript" src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.min.js"></script>
     </head>
     <body>
-        <div id="react-demo-entry-point"></div>
+      <div id="react-demo-entry-point"></div>
+      <button onclick="dpd_comms.receive({value:100,source:'fred'})">Hit me</button>
     </body>
 
+    <script type="text/javascript">
+      "use strict";
+      var dpd_comms = {
+        send:function(label, message) { console.log("Got label"); console.log(label); console.log("And message"); console.log(message) },
+        receive : function(message) {
+                        console.log("R Got incoming"); console.log(message);
+                        for(var i in this.callbacks) { this.callbacks[i](message); };
+        },
+        add_callback : function(callback) { dpd_comms.callbacks.push(callback); },
+        callbacks : []
+      };
+    </script>
     <script type="text/javascript" src="/lib/bundle.js"></script>
 </html>

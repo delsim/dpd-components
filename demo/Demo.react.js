@@ -5,10 +5,16 @@ class Demo extends Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            value: '',
+            source: 'freda'
         }
     }
-
+    setTheState(newProps) {
+        var ns = { };
+        if( newProps.value ) {ns.value = newProps.value; };
+        if( newProps.source ) {ns.source = newProps.source;};
+        this.setState(ns);
+    }
     render() {
         return (
             <div>
@@ -17,9 +23,9 @@ class Demo extends Component {
                 <hr/>
                 <h2>DPDynamicComponent</h2>
                 <DPDynamicComponent
-                    source="This is an example label"
+                    source={this.state.source}
                     value={this.state.value}
-                    setProps={newProps => this.setState({value: newProps.value})}
+                    setProps={this.setTheState.bind(this)}
                 />
                 <hr/>
             </div>
