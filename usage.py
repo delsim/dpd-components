@@ -7,10 +7,10 @@ app = dash.Dash('')
 app.scripts.config.serve_locally = True
 
 app.layout = html.Div([
-    dpd_components.ExampleComponent(
+    dpd_components.DPDynamicComponent(
         id='input',
         value='my-value-fredd',
-        label='my-lvvvvvvvvabel'
+        source='my-lvvvvvvvvabel'
     ),
     html.Div(id='output')
 ])

@@ -2,19 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * ExampleComponent is an example component.
- * It takes a property, `label`, and
- * displays it.
- * It renders an input with the property `value`
- * which is editable by the user.
+ * DPDynamicComponent listens for messages and propagates them into the dash component
  */
-export default class ExampleComponent extends Component {
+export default class DPDynamicComponent extends Component {
     render() {
-        const {id, label, setProps, value} = this.props;
+        const {id, setProps, source, value} = this.props;
 
         return (
             <div id={id}>
-                ExampleComponent: {label}
+                DPDynamicComponent: {source}
                 <input
                     value={value}
                     onChange={e => {
@@ -35,19 +31,19 @@ export default class ExampleComponent extends Component {
     }
 }
 
-ExampleComponent.propTypes = {
+DPDynamicComponent.propTypes = {
     /**
      * The ID used to identify this compnent in Dash callbacks
      */
     id: PropTypes.string,
 
     /**
-     * A label that will be printed when this component is rendered.
+     * The source name that the component listens to.
      */
-    label: PropTypes.string.isRequired,
+    source: PropTypes.string,
 
     /**
-     * The value displayed in the input
+     * The current value
      */
     value: PropTypes.string,
 

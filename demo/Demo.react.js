@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ExampleComponent} from '../src';
+import {DPDynamicComponent} from '../src';
 
 class Demo extends Component {
     constructor() {
@@ -15,9 +15,9 @@ class Demo extends Component {
                 <h1>dpd-components Demo</h1>
 
                 <hr/>
-                <h2>ExampleComponent</h2>
-                <ExampleComponent
-                    label="This is an example label"
+                <h2>DPDynamicComponent</h2>
+                <DPDynamicComponent
+                    source="This is an example label"
                     value={this.state.value}
                     setProps={newProps => this.setState({value: newProps.value})}
                 />
