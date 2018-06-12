@@ -15,3 +15,12 @@ Django Plotly Dash Components
 * source env/bin/activate
 * export PATH=$PATH:$PWD/node_modules/.bin
 
+##
+
+Commands
+
+* to test the component python usage.py
+* readme compiler grip
+* doc builder TODO
+* local rebuild npm prepublish && python setup.py install
+* js interaction builder run demo

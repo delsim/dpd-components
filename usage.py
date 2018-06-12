@@ -9,8 +9,8 @@ app.scripts.config.serve_locally = True
 app.layout = html.Div([
     dpd_components.ExampleComponent(
         id='input',
-        value='my-value',
-        label='my-label'
+        value='my-value-fredd',
+        label='my-lvvvvvvvvabel'
     ),
     html.Div(id='output')
 ])
