@@ -60,7 +60,13 @@ typings/
 # next.js build output
 .next
 
+# Virtualenv
+
+env/*
+
 # Python pieces
 
 build/
 dist/
+*/__pycache__/*
+*.egg-info/*
