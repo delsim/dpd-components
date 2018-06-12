@@ -1,0 +1,10 @@
+{
+    "name" : "dpd-components",
+    "version" : "0.0.1",
+    "description" : "Django Plotly Dash components",
+    "main" : "lib/index.js",
+    "repository" : {
+        "url" : "https"//github.com/GibbsConsulting/dpd-components.git",
+        "type" : "git"
+    }
+}
