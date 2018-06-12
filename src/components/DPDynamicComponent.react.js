@@ -12,42 +12,30 @@ export default class DPDynamicComponent extends Component {
         global.dpd_comms.add_callback(this.handleMessage.bind(this));
     }
     handleMessage(e) {
-        console.log("Incoming message");
-        console.log(e);
         if( e.source == this.props.source && this.props.setProps ){
-            console.log("Setting value");
             this.props.setProps({value:e.value});
-        } else {
-            console.log(e.source);
-            console.log(this.props.source);
         }
     }
     doOnChange(event) {
-        var theValue = event.target.value;
         if (this.props.setProps) {
             this.props.setProps({
-                value: theValue
+                value: event.target.value
             });
         }
-        console.log("In doOnChange with event");
-        console.log(theValue);
     }
     doSourceChange(event) {
-        var theValue = event.target.value;
         if (this.props.setProps) {
             this.props.setProps({
-                source: theValue
+                source: event.target.value
             });
         }
-        console.log("In doSourceChange with event");
-        console.log(theValue);
     }
     render() {
         const {id, setProps, source, value} = this.props;
 
         return (
             <div id={id}>
-                DPDynamicComponent: {source} and {global.junkage}
+                DPDynamicComponent: source {source} with value {value}
                 <input
                     value={value}
                     onChange={this.doOnChange.bind(this)}
@@ -62,7 +50,7 @@ export default class DPDynamicComponent extends Component {
 }
 
 DPDynamicComponent.propTypes = {
-    /**
+    /**1
      * The ID used to identify this compnent in Dash callbacks
      */
     id: PropTypes.string,
