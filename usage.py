@@ -5,12 +5,13 @@ import dash_html_components as html
 app = dash.Dash('')
 
 app.layout = html.Div([
+    dpd_components.DPDynamicComponent(id="input"),
     html.Div(id="output"),
     ])
 
 @app.callback(
     dash.dependencies.Output('output', 'children'),
-    [dash.dependencies.Input('output', 'style'),
+    [dash.dependencies.Input('input', 'style'),
      ])
 def display_output(value):
     return "input value is %s" %value
