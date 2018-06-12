@@ -33,6 +33,7 @@
     },
     "devDependencies" : {
         "dash-components-archetype-dev": "^0.2.11",
-        "react-test-renderer" : "^15.5.4"
+        "react-test-renderer" : "^15.5.4",
+        "enzyme": "^2.8.2"
     }
 }
