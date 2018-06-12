@@ -1,0 +1,4 @@
+django-plotly-dash
+grip
+sphinx-autobuild
+twine
