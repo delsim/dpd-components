@@ -34,7 +34,7 @@ export default class DPDynamicComponent extends Component {
         const {id, setProps, source, value} = this.props;
 
         return (
-            <div id={id}>
+                <div id={id}>
                 DPDynamicComponent: source {source} with value {value}
                 <input
                     value={value}
