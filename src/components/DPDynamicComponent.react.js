@@ -1,14 +1,29 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * DPDynamicComponent listens for messages and propagates them into the dash component
+ * DPDynamicComponent listens for messages and propagates them into the dash component hierarcy
  */
 export default class DPDynamicComponent extends Component {
     constructor(props) {
         super(props);
+        this.add_callback();
+    }
+    add_callback() {
+        if( !global.dpd_comms ) {
+            global.dpd_comms = {
+                send:function(label, message) { console.log('Got label'); console.log(label); console.log('And message'); console.log(message) },
+                receive : function(message) {
+                    console.log('R Got incoming'); console.log(message);
+                    for(var i in this.callbacks) { this.callbacks[i](message); }
+                },
+                add_callback : function(callback) { dpd_comms.callbacks.push(callback); },
+                callbacks : []
+            };
+        }
         global.dpd_comms.add_callback(this.handleMessage.bind(this));
     }
     handleMessage(e) {
@@ -31,7 +46,7 @@ export default class DPDynamicComponent extends Component {
         }
     }
     render() {
-        const {id, setProps, source, value} = this.props;
+        const {id, source, value} = this.props;
 
         return (
                 <div id={id}>
@@ -51,7 +66,7 @@ export default class DPDynamicComponent extends Component {
 
 DPDynamicComponent.propTypes = {
     /**1
-     * The ID used to identify this compnent in Dash callbacks
+     * The ID used to identify this component in Dash callbacks
      */
     id: PropTypes.string,
 

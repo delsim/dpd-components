@@ -11,8 +11,8 @@ class Demo extends Component {
     }
     setTheState(newProps) {
         var ns = { };
-        if( newProps.value ) {ns.value = newProps.value; };
-        if( newProps.source ) {ns.source = newProps.source;};
+        if( newProps.value ) {ns.value = newProps.value; }
+        if( newProps.source ) {ns.source = newProps.source;}
         this.setState(ns);
     }
     render() {

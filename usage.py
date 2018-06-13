@@ -17,9 +17,11 @@ app.layout = html.Div([
 
 @app.callback(
 	dash.dependencies.Output('output', 'children'),
-	[dash.dependencies.Input('input', 'value')])
-def display_output(value):
-    return 'You have entered {}'.format(value)
+	[dash.dependencies.Input('input', 'value'),
+         dash.dependencies.Input('input', 'source')
+         ])
+def display_output(value, source):
+    return 'Value is %s and Source is %s'%(value, source)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
