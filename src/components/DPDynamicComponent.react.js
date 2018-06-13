@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -15,14 +15,15 @@ export default class DPDynamicComponent extends Component {
     add_callback() {
         if( !global.dpd_comms ) {
             global.dpd_comms = {
-                send:function(label, message) { console.log('Got label'); console.log(label); console.log('And message'); console.log(message) },
+                send:function(label, message) { console.log("Got label"); console.log(label); console.log("And message"); console.log(message) },
                 receive : function(message) {
-                    console.log('R Got incoming'); console.log(message);
-                    for(var i in this.callbacks) { this.callbacks[i](message); }
+                    console.log("R Got incoming"); console.log(message);
+                    for(var i in this.callbacks) { this.callbacks[i](message); };
                 },
                 add_callback : function(callback) { dpd_comms.callbacks.push(callback); },
                 callbacks : []
             };
+            // TODO register with global in parent window
         }
         global.dpd_comms.add_callback(this.handleMessage.bind(this));
     }
@@ -31,36 +32,8 @@ export default class DPDynamicComponent extends Component {
             this.props.setProps({value:e.value});
         }
     }
-    doOnChange(event) {
-        if (this.props.setProps) {
-            this.props.setProps({
-                value: event.target.value
-            });
-        }
-    }
-    doSourceChange(event) {
-        if (this.props.setProps) {
-            this.props.setProps({
-                source: event.target.value
-            });
-        }
-    }
     render() {
-        const {id, source, value} = this.props;
-
-        return (
-                <div id={id}>
-                DPDynamicComponent: source {source} with value {value}
-                <input
-                    value={value}
-                    onChange={this.doOnChange.bind(this)}
-                />
-                <input
-                    value={source}
-                    onChange={this.doSourceChange.bind(this)}
-                />
-            </div>
-        );
+        return null;
     }
 }
 

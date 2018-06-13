@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {DPDynamicComponent} from '../src';
+import {DPDynamicComponent, DPDirectComponent} from '../src';
 
 class Demo extends Component {
     constructor() {
@@ -26,6 +26,9 @@ class Demo extends Component {
                     source={this.state.source}
                     value={this.state.value}
                     setProps={this.setTheState.bind(this)}
+                />
+                <hr/>
+                <DPDirectComponent
                 />
                 <hr/>
             </div>

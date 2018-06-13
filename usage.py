@@ -12,6 +12,9 @@ app.layout = html.Div([
         value='my-value-fredd',
         source='my-lvvvvvvvvabel'
     ),
+    dpd_components.DPDirectComponent(
+        id="direct",
+    ),
     html.Div(id='output')
 ])
 
