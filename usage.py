@@ -19,10 +19,10 @@ app.layout = html.Div([
 ])
 
 @app.callback(
-	dash.dependencies.Output('output', 'children'),
-	[dash.dependencies.Input('input', 'value'),
-         dash.dependencies.Input('input', 'source')
-         ])
+    dash.dependencies.Output('output', 'children'),
+    [dash.dependencies.Input('input', 'value'),
+     dash.dependencies.Input('input', 'source')
+     ])
 def display_output(value, source):
     return 'Value is %s and Source is %s'%(value, source)
 
