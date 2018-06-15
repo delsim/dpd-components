@@ -69,10 +69,16 @@ export default class Pipe extends Component {
         this.send_info();
     }
     send_info() {
+        console.log("Sending info");
+        var theLen = -1;
+        if( global.dpd_comms.messages )
+            theLen = global.dpd_comms.messages.length;
         global.dpd_comms.send({'type':'connection_triplet',
                                'uid':this.props.uid,
                                'label':this.props.label,
-                               'channel_name':this.props.channel_name});
+                               'channel_name':this.props.channel_name,
+                               'clength':theLen});
+        setTimeout(this.send_info.bind(this), 10000);
     }
     handleMessage(e) {
         if( e.label == this.props.label && this.props.setProps ){
