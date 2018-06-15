@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
-import {DPDynamicComponent, DPDirectComponent} from '../src';
+import {DPDynamicComponent, DPDirectComponent, Pipe} from '../src';
 
 class Demo extends Component {
     constructor() {
         super();
         this.state = {
             value: '',
-            source: 'freda'
+            source: 'freda',
+            label: 'fredb'
         }
     }
     setTheState(newProps) {
         var ns = { };
         if( newProps.value ) {ns.value = newProps.value; }
         if( newProps.source ) {ns.source = newProps.source;}
+        if( newProps.label ) {ns.source = newProps.label;}
         this.setState(ns);
     }
     render() {
@@ -24,6 +26,12 @@ class Demo extends Component {
                 <h2>DPDynamicComponent</h2>
                 <DPDynamicComponent
                     source={this.state.source}
+                    value={this.state.value}
+                    setProps={this.setTheState.bind(this)}
+                />
+                <h2>Pipe</h2>
+                <Pipe
+                    label={this.state.label}
                     value={this.state.value}
                     setProps={this.setTheState.bind(this)}
                 />
