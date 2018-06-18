@@ -24,7 +24,6 @@ export default class Pipe extends Component {
                     } else {
                         this.messages.push(message);
                     }
-                    console.log('Message'); console.log(message)
                 },
                 receive : function(message) {
                     for(var i in this.callbacks) { this.callbacks[i](message); }
@@ -69,15 +68,10 @@ export default class Pipe extends Component {
         this.send_info();
     }
     send_info() {
-        console.log("Sending info");
-        var theLen = -1;
-        if( global.dpd_comms.messages )
-            theLen = global.dpd_comms.messages.length;
         global.dpd_comms.send({'type':'connection_triplet',
                                'uid':this.props.uid,
                                'label':this.props.label,
-                               'channel_name':this.props.channel_name,
-                               'clength':theLen});
+                               'channel_name':this.props.channel_name});
         setTimeout(this.send_info.bind(this), 10000);
     }
     handleMessage(e) {
