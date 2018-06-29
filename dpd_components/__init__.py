@@ -29,17 +29,6 @@ _css_dist = []
 
 for _component in _components:
 
-    if _component.__name__ == 'Pipe':
-        class WrappedPipe(_component):
-            def __init__(self,**kwargs):
-                uid = kwargs.get('uid',None)
-                if uid is None:
-                    import uuid
-                    kwargs['uid'] = str(uuid.uuid4())
-                super(WrappedPipe, self).__init__(**kwargs)
-        WrappedPipe.__name__ = 'Pipe'
-        _component = WrappedPipe
-
     setattr(_this_module, _component.__name__, _component)
     setattr(_component, '_js_dist', _js_dist)
     setattr(_component, '_css_dist', _css_dist)
