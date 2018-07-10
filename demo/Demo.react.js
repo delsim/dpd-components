@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {DPDynamicComponent, DPDirectComponent, Pipe} from '../src';
+import {Pipe} from '../src';
 
 class Demo extends Component {
     constructor() {
@@ -23,20 +23,11 @@ class Demo extends Component {
                 <h1>dpd-components Demo</h1>
 
                 <hr/>
-                <h2>DPDynamicComponent</h2>
-                <DPDynamicComponent
-                    source={this.state.source}
-                    value={this.state.value}
-                    setProps={this.setTheState.bind(this)}
-                />
                 <h2>Pipe</h2>
                 <Pipe
                     label={this.state.label}
                     value={this.state.value}
                     setProps={this.setTheState.bind(this)}
-                />
-                <hr/>
-                <DPDirectComponent
                 />
                 <hr/>
             </div>
