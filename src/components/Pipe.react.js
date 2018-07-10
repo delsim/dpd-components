@@ -5,12 +5,26 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+// From Stack Overflow 105034 'create-guid-uuid-in-javascript'
+function generateUUID() { // Public Domain/MIT
+    var d = new Date().getTime();
+    if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+        d += performance.now(); //use high-precision timer if available
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+
 /**
  * Pipe component listens for messages and propagates them into the dash component hierarcy
  */
 export default class Pipe extends Component {
     constructor(props) {
         super(props);
+        this.uid = generateUUID();
         this.add_callback();
     }
     add_callback() {
@@ -69,7 +83,7 @@ export default class Pipe extends Component {
     }
     send_info() {
         global.dpd_comms.send({'type':'connection_triplet',
-                               'uid':this.props.uid,
+                               'uid':this.uid,
                                'label':this.props.label,
                                'channel_name':this.props.channel_name});
         setTimeout(this.send_info.bind(this), 10000);
@@ -91,17 +105,12 @@ Pipe.propTypes = {
     id: PropTypes.string,
 
     /**
-     * The UID used to identify this component instance in the backend. Changes are not propagated.
-     */
-    uid: PropTypes.string,
-
-    /**
      * The label for messages that the component should absorb.
      */
     label: PropTypes.string,
 
     /**
-     * The back-end channel name for sourcing messages. Changes are not propagated to the backend.
+     * The back-end channel name for sourcing messages.
      */
     channel_name: PropTypes.string,
 

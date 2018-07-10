@@ -1,6 +1,6 @@
 {
   "name": "dpd-components",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Django Plotly Dash component suite",
   "main": "lib/index.js",
   "repository": {
