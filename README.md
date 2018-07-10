@@ -74,3 +74,10 @@ To prepare a release, the version number in both ``dpd_components/version.py`` a
 
 Releases require both javascript and python components to be generated and uploaded, as described
 in the plotly [online documentation](https://dash.plot.ly/plugins).
+
+```bash
+npm login
+npm run publish-all
+# If the python upload part fails
+twine dist/*
+```
